@@ -1,0 +1,37 @@
+    <script>
+    
+      var intervalID = setInterval(function(){  
+        String.prototype.repeat = function(num){
+          return new Array(num + 1).join(this);
+        }
+
+        var filter = ['puistjes', 'puisten', 'uitbarstingen', 'mee-eters', 'mee eter','problemen','steenpuisten','steenpuist','puistje','puisten','eczeem','rosacea', 'acne', 'puist',
+                     'ontstekingen', 'ontsteking', 'keratosis', 'pilaris', 'probleem', 'mee-eter', 'uitbraken', 'uitbraak', 'vlekken', 'pukkeltjes'];
+
+        $('.content-review').html(function(i, txt){
+
+          // iterate over all words
+          for(var i=0; i<filter.length; i++){
+
+            // Create a regular expression and make it global
+            var pattern = new RegExp('\\b' + filter[i] + '\\b', 'gi');
+
+            // Create a new string filled with '*'
+            var replacement = '<mark>' + filter[i] + '</mark>';
+
+            txt = txt.replace(pattern, '******');
+            //txt = txt.replace(/./g, '*');
+          }
+
+          // returning txt will set the new text value for the current element
+          return txt;
+
+          if (++x === 15) {
+            window.clearInterval(intervalID);
+          }
+        }); 
+
+      }, 1000);     
+
+    </script>  
+    
